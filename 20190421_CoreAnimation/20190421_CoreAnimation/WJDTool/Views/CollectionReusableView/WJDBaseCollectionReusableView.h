@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  代理
  */
-@property (nonatomic, weak  ) id delegate;
+@property (nonatomic, weak) id delegate;
 
 @end
 

@@ -40,25 +40,21 @@
     // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
     CGAffineTransform transform = CGAffineTransformIdentity;
     
-    switch (self.imageOrientation)
-    {
+    switch (self.imageOrientation) {
         case UIImageOrientationDown:
-        case UIImageOrientationDownMirrored:
-        {
+        case UIImageOrientationDownMirrored: {
             transform = CGAffineTransformTranslate(transform, self.size.width, self.size.height);
             transform = CGAffineTransformRotate(transform, M_PI);
         }
             break;
         case UIImageOrientationLeft:
-        case UIImageOrientationLeftMirrored:
-        {
+        case UIImageOrientationLeftMirrored: {
             transform = CGAffineTransformTranslate(transform, self.size.width, 0);
             transform = CGAffineTransformRotate(transform, M_PI_2);
         }
             break;
         case UIImageOrientationRight:
-        case UIImageOrientationRightMirrored:
-        {
+        case UIImageOrientationRightMirrored: {
             transform = CGAffineTransformTranslate(transform, 0, self.size.height);
             transform = CGAffineTransformRotate(transform, -M_PI_2);
         }
@@ -66,18 +62,15 @@
         default:
             break;
     }
-    switch (self.imageOrientation)
-    {
+    switch (self.imageOrientation) {
         case UIImageOrientationUpMirrored:
-        case UIImageOrientationDownMirrored:
-        {
+        case UIImageOrientationDownMirrored: {
             transform = CGAffineTransformTranslate(transform, self.size.width, 0);
             transform = CGAffineTransformScale(transform, -1, 1);
         }
             break;
         case UIImageOrientationLeftMirrored:
-        case UIImageOrientationRightMirrored:
-        {
+        case UIImageOrientationRightMirrored: {
             transform = CGAffineTransformTranslate(transform, self.size.height, 0);
             transform = CGAffineTransformScale(transform, -1, 1);
         }
@@ -92,8 +85,7 @@
                                              CGImageGetColorSpace(self.CGImage),
                                              CGImageGetBitmapInfo(self.CGImage));
     CGContextConcatCTM(ctx, transform);
-    switch (self.imageOrientation)
-    {
+    switch (self.imageOrientation) {
         case UIImageOrientationLeft:
         case UIImageOrientationLeftMirrored:
         case UIImageOrientationRight:
@@ -113,6 +105,7 @@
     return img;
     
 }
+
 //改变图片大小
 - (UIImage *)resizeImageToSize:(CGSize)maxSize {
     
@@ -125,6 +118,7 @@
     UIGraphicsEndImageContext();
     return image;
 }
+
 //将图片压缩到指定大小
 - (UIImage *)compressImageToByte:(NSInteger)maxLength {
     
@@ -151,6 +145,7 @@
     }
     return [UIImage imageWithData:[self __continueCompressImage:data toByte:maxLength Compression:compression]];
 }
+
 //压缩图片大小质量之后还大于指定大小继续压缩图片大小
 - (NSData *)__continueCompressImage:(NSData *)imageData toByte:(NSInteger)maxLength Compression:(float)compression {
     

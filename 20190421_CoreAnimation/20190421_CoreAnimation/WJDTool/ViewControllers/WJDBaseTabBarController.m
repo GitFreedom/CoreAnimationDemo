@@ -52,6 +52,7 @@
         [self addChildViewController:vc];
     }
 }
+
 - (void)addchlidVcs {
     
     NSArray *vcClassArray = @[];

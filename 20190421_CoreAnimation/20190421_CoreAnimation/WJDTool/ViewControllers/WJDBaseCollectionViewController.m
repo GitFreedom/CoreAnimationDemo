@@ -22,12 +22,16 @@
     [super viewDidLoad];
     
 }
+
 #pragma mark - delegate
+
 #pragma mark   UICollectionViewDataSource
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
     return self.datas.count;
 }
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     if (self.datas.count > section) {
@@ -35,6 +39,7 @@
     }
     return 0;
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.datas.count > indexPath.section) {
@@ -53,6 +58,7 @@
     }
     return [UICollectionViewCell new];
 }
+
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionReusableView *reusableView = nil;
@@ -75,7 +81,9 @@
     }
     return reusableView;
 }
+
 #pragma mark   UICollectionViewDelegateFlowLayout
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.datas.count > indexPath.section) {
@@ -86,6 +94,7 @@
     }
     return CGSizeZero;
 }
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     
     if (self.datas.count > section) {
@@ -93,6 +102,7 @@
     }
     return CGSizeZero;
 }
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     
     if (self.datas.count > section) {
@@ -100,17 +110,19 @@
     }
     return CGSizeZero;
 }
-#pragma mark - getter
+
+#pragma mark - Getter
+
 - (UICollectionView *)collectionView {
     
     if (!_collectionView) {
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.minimumLineSpacing          = 0.0f;
-        flowLayout.minimumInteritemSpacing     = 0.0f;
+        flowLayout.minimumLineSpacing = 0.0f;
+        flowLayout.minimumInteritemSpacing = 0.0f;
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flowLayout];
         [self __registerClass];
-        _collectionView.delegate     = self;
-        _collectionView.dataSource   = self;
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.contentInset = UIEdgeInsetsMake(0, 0, WJDDevice.bottomOffset, 0);
         if (WJDDevice.systemVersion >= 11.0f) {
@@ -123,6 +135,7 @@
     }
     return _collectionView;
 }
+
 - (NSMutableArray<WJDBaseSectionModel *> *)datas {
     
     if (!_datas) {
@@ -130,13 +143,17 @@
     }
     return _datas;
 }
-#pragma mark - setter
+
+#pragma mark - Setter
+
 //- (void)setBlankType:(WJDBlankType)blankType {
 //    
 //    super.blankType = blankType;
 //    [self showBlankWithFrame:CGRectZero Type:blankType view:self.collectionView];
 //}
-#pragma mark - overWriteMethod
+
+#pragma mark - OverWriteMethod
+
 - (void)setupViews {
     
     CGFloat height = WJDDevice.screenHeight;
@@ -156,7 +173,9 @@
     self.collectionView.frame = CGRectMake(0, 0, self.view.frame.size.width, height);
     [self.view addSubview:self.collectionView];
 }
+
 #pragma mark - PrivateMethod
+
 - (void)__registerClass {
     
     NSArray<NSString *> *cellArray = [self collectionViewCellClassNames];
@@ -172,17 +191,22 @@
         [_collectionView registerClass:NSClassFromString(sectionFooterClassName) forSupplementaryViewOfKind:@"UICollectionElementKindSectionFooter" withReuseIdentifier:sectionFooterClassName];
     }
 }
+
 #pragma mark - PublicMethod
+
 - (NSArray<NSString *> *)collectionViewCellClassNames {
     
     return @[];
 }
+
 - (NSArray<NSString *> *)collectionViewSectionHeaderClassNames {
     
     return @[];
 }
+
 - (NSArray<NSString *> *)collectionViewSectionFooterClassNames {
     
     return @[];
 }
+
 @end

@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import <CoreGraphics/CGBase.h>
 #import <CoreGraphics/CGGeometry.h>
+
 #import "WJDBaseCellModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,27 +20,27 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  sectionHeaderClass
  */
-@property (nonatomic, copy  ) NSString *headerClassName;
+@property (nonatomic, copy) NSString *headerClassName;
 /**
  *  sectionFooterClass
  */
-@property (nonatomic, copy  ) NSString *footerClassName;
+@property (nonatomic, copy) NSString *footerClassName;
 /**
  *  sectionHeaderHeight (默认值CGFLOAT_MIN)
  */
-@property (nonatomic, assign) CGFloat   headerHeight;
+@property (nonatomic, assign) CGFloat headerHeight;
 /**
  *  sectionFooterHeight (默认值CGFLOAT_MIN)
  */
-@property (nonatomic, assign) CGFloat   footerHeight;
+@property (nonatomic, assign) CGFloat footerHeight;
 /**
  *  sectionHeaderSize (默认值CGSizeZero)
  */
-@property (nonatomic, assign) CGSize    headerSize;
+@property (nonatomic, assign) CGSize headerSize;
 /**
  *  sectionFooterSize (默认值CGSizeZero)
  */
-@property (nonatomic, assign) CGSize    footerSize;
+@property (nonatomic, assign) CGSize footerSize;
 /**
  *  cell数组 （默认初始化）
  */

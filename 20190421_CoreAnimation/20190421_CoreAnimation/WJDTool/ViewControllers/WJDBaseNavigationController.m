@@ -22,13 +22,15 @@
     self.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
     //设置导航条的样式
     UINavigationBar *navBar = [UINavigationBar appearance];
-    navBar.barStyle         = UIBarStyleDefault;
+    navBar.barStyle = UIBarStyleDefault;
     [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor], NSFontAttributeName:[UIFont systemFontOfSize:17.0f]}];
     [navBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
 }
+
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     return self.childViewControllers.count > 1;
 }
+
 /**
  *  当控制器, 拿到导航控制器(需要是这个子类), 进行压栈时, 都会调用这个方法
  *

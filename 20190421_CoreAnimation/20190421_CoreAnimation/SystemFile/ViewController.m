@@ -22,7 +22,9 @@
     
     [self _configInit];
 }
+
 #pragma mark - Private
+
 - (void)_configInit {
     
     self.title = @"iOS动画";
@@ -31,10 +33,20 @@
     for (NSInteger i = 0; i < titleArray.count; i++) {
         WJDDemoCommonCellModel *cellModel = [[WJDDemoCommonCellModel alloc] init];
         cellModel.title = titleArray[i];
+        cellModel.jumpType = WJDJumpType_AnimationCategoryDemoVC + i;
         [sectionModel.cellDatas addObject:cellModel];
     }
     [self.datas addObject:sectionModel];
     [self.tableView reloadData];
 }
 
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (self.datas.count > indexPath.section && self.datas[indexPath.section].cellDatas.count > indexPath.row) {
+        WJDDemoCommonCellModel *cellModel = (WJDDemoCommonCellModel *)self.datas[indexPath.section].cellDatas[indexPath.row];
+        [WJDJumpManager jumpWithJumpType:cellModel.jumpType SourceVC:self Param:@{@"title" : cellModel.title}];
+    }
+}
 @end

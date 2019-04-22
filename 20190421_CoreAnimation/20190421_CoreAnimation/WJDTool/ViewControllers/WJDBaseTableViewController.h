@@ -7,6 +7,7 @@
 //
 
 #import "WJDBaseViewController.h"
+
 #import "WJDBaseSectionModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  表视图
  */
-@property (nonatomic, strong) UITableView    *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 /**
  *  数据
  */

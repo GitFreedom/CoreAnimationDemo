@@ -19,9 +19,44 @@
     }
     NSString *vcName;
     switch (jumpType) {
-        case WJDJumpType_webVC://网页控制器
-        {
+        case WJDJumpType_WebVC: { //网页控制器
             vcName = @"WJDBaseWebViewController";
+        }
+            break;
+        case WJDJumpType_AnimationCategoryDemoVC: { //UIView的动画相关的分类
+            vcName = @"WJDAnimationCategoryDemoVC";
+        }
+            break;
+        case WJDJumpType_CoreAnimationDemoVC: { //核心动画
+            vcName = @"WJDCoreAnimationDemoVC";
+        }
+            break;
+        case WJDJumpType_AnimationWithBlockDemoVC: { //动画块
+            vcName = @"WJDAnimationWithBlockDemoVC";
+        }
+            break;
+        case WJDJumpType_KeyframeAnimationsDemoVC: { //关键帧动画
+            vcName = @"WJDKeyframeAnimationsDemoVC";
+        }
+            break;
+        case WJDJumpType_CAPropertyAnimationDemoVC: { //属性动画
+            vcName = @"WJDCAPropertyAnimationDemoVC";
+        }
+            break;
+        case WJDJumpType_CATransitionDemoVC: { //转场动画
+            vcName = @"WJDCATransitionDemoVC";
+        }
+            break;
+        case WJDJumpType_CAAnimationGroupDemoVC: { //动画组
+            vcName = @"WJDCAAnimationGroupDemoVC";
+        }
+            break;
+        case WJDJumpType_CABasicAnimationDemoVC: { //基础动画
+            vcName = @"WJDCABasicAnimationDemoVC";
+        }
+            break;
+        case WJDJumpType_CAKeyframeAnimationDemoVC: { //关键帧动画
+            vcName = @"WJDCAKeyframeAnimationDemoVC";
         }
             break;
         default:

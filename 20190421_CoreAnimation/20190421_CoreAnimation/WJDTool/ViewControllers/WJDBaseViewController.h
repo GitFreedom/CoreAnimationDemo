@@ -33,27 +33,27 @@ typedef void(^VCDidFinishDataBlcok)(UIViewController *viewController, id data, N
 /**
  *  上个控制器名称
  */
-@property (nonatomic, copy  ) NSString    *lastVCName;
+@property (nonatomic, copy  ) NSString *lastVCName;
 /**
  *  单击返回按钮需要返回的控制器名
  */
-@property (nonatomic, copy  ) NSString    *backVCName;
+@property (nonatomic, copy  ) NSString *backVCName;
 /**
  *  是否刷新需要返回控制器的数据 （挨个判断刷新太麻烦，暂时不用)
  */
-@property (nonatomic, assign) BOOL        isRefreshBackVCData;
+@property (nonatomic, assign) BOOL isRefreshBackVCData;
 /**
  *  导航栏状态
  */
-@property (nonatomic, assign) WJDNavigationStatus   navigationStatus;
+@property (nonatomic, assign) WJDNavigationStatus navigationStatus;
 /**
  *  tabbar状态
  */
-@property (nonatomic, assign) WJDTabbarStatus       tabbarStatus;
+@property (nonatomic, assign) WJDTabbarStatus tabbarStatus;
 /**
  *  控制器回调
  */
-@property (nonatomic, copy  ) VCDidFinishDataBlcok  dataBlock;
+@property (nonatomic, copy  ) VCDidFinishDataBlcok dataBlock;
 /**
  *  请求数据
  */

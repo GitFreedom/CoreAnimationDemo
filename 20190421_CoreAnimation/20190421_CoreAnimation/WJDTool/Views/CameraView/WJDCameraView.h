@@ -17,11 +17,11 @@ typedef void(^TakePhotoComplete)(WJDCameraView *cameraView, UIImage *image);
 /**
  *  控制器（用来弹出授权弹框）
  */
-@property (nonatomic, weak  ) UIViewController *targetVC;
+@property (nonatomic, weak) UIViewController *targetVC;
 /**
  *  是否有拍照权限
  */
-@property (nonatomic, assign, readonly) BOOL   haveTakePhotoAuthorization;
+@property (nonatomic, assign, readonly) BOOL haveTakePhotoAuthorization;
 /**
  *  启动
  */

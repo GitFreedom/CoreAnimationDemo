@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  cell名称
  */
-@property (nonatomic, copy  ) NSString *className;
+@property (nonatomic, copy) NSString *className;
 /**
  *  cell高度
  */

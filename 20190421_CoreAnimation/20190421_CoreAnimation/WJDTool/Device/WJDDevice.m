@@ -10,6 +10,7 @@
 #import <sys/utsname.h>
 #import <CoreGraphics/CGGeometry.h>
 #import <UIKit/UIScreen.h>
+#import <UIKit/UIApplication.h>
 
 @interface WJDDevice () {
     NSString *__appVersion;
@@ -20,10 +21,10 @@
     NSString *__deviceOS;
     NSString *__deviceModel;
     NSString *__deviceName;
-    double   __systemVersion;
-    double   __statusBarHeight;
-    double   __bottomOffset;
-    CGSize   __screenSize;
+    double __systemVersion;
+    double __statusBarHeight;
+    double __bottomOffset;
+    CGSize __screenSize;
     WJDScreenSizeType __screenSizeType;
 }
 
@@ -143,89 +144,61 @@ Singleton_imp(WJDDevice)
                                                   encoding:NSUTF8StringEncoding];
         if ([deviceName isEqualToString:@"i386"]) {
             deviceName = @"Simulator";
-        }
-        else if ([deviceName isEqualToString:@"x86_64"]) {
+        } else if ([deviceName isEqualToString:@"x86_64"]) {
             deviceName = @"Simulator";
-        }
-        else if ([deviceName isEqualToString:@"iPhone1,1"]) {
+        } else if ([deviceName isEqualToString:@"iPhone1,1"]) {
             deviceName = @"";
-        }
-        else if ([deviceName isEqualToString:@"iPhone1,2"]) {
+        } else if ([deviceName isEqualToString:@"iPhone1,2"]) {
             deviceName = @"iPhone3G";
-        }
-        else if ([deviceName isEqualToString:@"iPhone2,1"]) {
+        } else if ([deviceName isEqualToString:@"iPhone2,1"]) {
             deviceName = @"iPhone3GS";
-        }
-        else if ([deviceName isEqualToString:@"iPhone3,1"]) {
+        } else if ([deviceName isEqualToString:@"iPhone3,1"]) {
             deviceName = @"iPhone4";
-        }
-        else if ([deviceName isEqualToString:@"iPhone3,2"]) {
+        } else if ([deviceName isEqualToString:@"iPhone3,2"]) {
             deviceName = @"iPhone4";
-        }
-        else if ([deviceName isEqualToString:@"iPhone4,1"]) {
+        } else if ([deviceName isEqualToString:@"iPhone4,1"]) {
             deviceName = @"iPhone4s";
-        }
-        else if ([deviceName isEqualToString:@"iPhone5,1"]) {
+        } else if ([deviceName isEqualToString:@"iPhone5,1"]) {
             deviceName = @"iPhone5";
-        }
-        else if ([deviceName isEqualToString:@"iPhone5,2"]) {
+        } else if ([deviceName isEqualToString:@"iPhone5,2"]) {
             deviceName = @"iPhone5";
-        }
-        else if ([deviceName isEqualToString:@"iPhone5,3"]) {
+        } else if ([deviceName isEqualToString:@"iPhone5,3"]) {
             deviceName = @"iPhone5c";
-        }
-        else if ([deviceName isEqualToString:@"iPhone5,4"]) {
+        } else if ([deviceName isEqualToString:@"iPhone5,4"]) {
             deviceName = @"iPhone5c";
-        }
-        else if ([deviceName isEqualToString:@"iPhone6,1"]) {
+        } else if ([deviceName isEqualToString:@"iPhone6,1"]) {
             deviceName = @"iPhone5s";
-        }
-        else if ([deviceName isEqualToString:@"iPhone6,2"]) {
+        } else if ([deviceName isEqualToString:@"iPhone6,2"]) {
             deviceName = @"iPhone5s";
-        }
-        else if ([deviceName isEqualToString:@"iPhone7,1"]) {
+        } else if ([deviceName isEqualToString:@"iPhone7,1"]) {
             deviceName = @"iPhone6Plus";
-        }
-        else if ([deviceName isEqualToString:@"iPhone7,2"]) {
+        } else if ([deviceName isEqualToString:@"iPhone7,2"]) {
             deviceName = @"iPhone6";
-        }
-        else if ([deviceName isEqualToString:@"iPhone8,1"]) {
+        } else if ([deviceName isEqualToString:@"iPhone8,1"]) {
             deviceName = @"iPhone6s";
-        }
-        else if ([deviceName isEqualToString:@"iPhone8,2"]) {
+        } else if ([deviceName isEqualToString:@"iPhone8,2"]) {
             deviceName = @"iPhone6sPlus";
-        }
-        else if ([deviceName isEqualToString:@"iPhone8,4"]) {
+        } else if ([deviceName isEqualToString:@"iPhone8,4"]) {
             deviceName = @"iPhoneSE";
-        }
-        else if ([deviceName isEqualToString:@"iPhone9,1"]) {
+        } else if ([deviceName isEqualToString:@"iPhone9,1"]) {
             deviceName = @"iPhone7";
-        }
-        else if ([deviceName isEqualToString:@"iPhone9,3"]) {
+        } else if ([deviceName isEqualToString:@"iPhone9,3"]) {
             deviceName = @"iPhone7";
-        }
-        else if ([deviceName isEqualToString:@"iPhone9,2"]) {
+        } else if ([deviceName isEqualToString:@"iPhone9,2"]) {
             deviceName = @"iPhone7Plus";
-        }
-        else if ([deviceName isEqualToString:@"iPhone9,4"]) {
+        } else if ([deviceName isEqualToString:@"iPhone9,4"]) {
             deviceName = @"iPhone7Plus";
-        }
-        else if ([deviceName isEqualToString:@"iPhone10,1"]) {
+        } else if ([deviceName isEqualToString:@"iPhone10,1"]) {
             deviceName = @"iPhone8";
-        }
-        else if ([deviceName isEqualToString:@"iPhone10,4"]) {
+        } else if ([deviceName isEqualToString:@"iPhone10,4"]) {
             deviceName = @"iPhone8";
-        }
-        else if ([deviceName isEqualToString:@"iPhone10,2"]) {
+        } else if ([deviceName isEqualToString:@"iPhone10,2"]) {
             deviceName = @"iPhone8Plus";
-        }
-        else if ([deviceName isEqualToString:@"iPhone10,5"]) {
+        } else if ([deviceName isEqualToString:@"iPhone10,5"]) {
             deviceName = @"iPhone8Plus";
-        }
-        else if ([deviceName isEqualToString:@"iPhone10,3"]) {
+        } else if ([deviceName isEqualToString:@"iPhone10,3"]) {
             deviceName = @"iPhoneX";
-        }
-        else if ([deviceName isEqualToString:@"iPhone10,6"]) {
+        } else if ([deviceName isEqualToString:@"iPhone10,6"]) {
             deviceName = @"iPhoneX";
         }
         [WJDDevice shareInstance]->__deviceName = deviceName;
@@ -267,16 +240,13 @@ Singleton_imp(WJDDevice)
         unsigned short screenWidth  = (unsigned short)CGRectGetWidth([UIScreen mainScreen].bounds);
         unsigned short screenHeight = (unsigned short)CGRectGetHeight([UIScreen mainScreen].bounds);
         switch (screenWidth) {
-            case 320:
-            {
+            case 320: {
                 switch (screenHeight) {
-                    case 480:
-                    {
+                    case 480: {
                         screenSizeType = ScreenSizeType_3_5_inch;
                     }
                         break;
-                    case 568:
-                    {
+                    case 568: {
                         screenSizeType = ScreenSizeType_4_0_inch;
                     }
                         break;
@@ -285,16 +255,13 @@ Singleton_imp(WJDDevice)
                 }
             }
                 break;
-            case 375:
-            {
+            case 375: {
                 switch (screenHeight) {
-                    case 667:
-                    {
+                    case 667: {
                         screenSizeType = ScreenSizeType_4_7_inch;
                     }
                         break;
-                    case 812:
-                    {
+                    case 812: {
                         screenSizeType = ScreenSizeType_5_8_inch;
                     }
                         break;
@@ -303,16 +270,13 @@ Singleton_imp(WJDDevice)
                 }
             }
                 break;
-            case 414:
-            {
+            case 414: {
                 switch (screenHeight) {
-                    case 736:
-                    {
+                    case 736: {
                         screenSizeType = ScreenSizeType_5_5_inch;
                     }
                         break;
-                    case 896:
-                    {
+                    case 896: {
                         screenSizeType = [UIScreen mainScreen].scale == 2 ? ScreenSizeType_6_1_inch : ScreenSizeType_6_5_inch;
                     }
                         break;
@@ -382,6 +346,16 @@ Singleton_imp(WJDDevice)
  */
 + (void)openAppWithAppId:(nonnull NSString *)appid {
     
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://",appid]];
+    
+    //先判断是否能打开该url
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        //打开url
+        [[UIApplication sharedApplication] openURL:url];
+    } else {
+        //给个提示或者做点别的事情
+        NSLog(@"******没安装该app！******");
+    }
 }
 
 @end

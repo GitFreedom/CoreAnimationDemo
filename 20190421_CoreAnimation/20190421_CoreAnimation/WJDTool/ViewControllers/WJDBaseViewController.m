@@ -7,6 +7,7 @@
 //
 
 #import "WJDBaseViewController.h"
+
 #import <objc/runtime.h>
 #import "WJDImageProducer.h"
 //#import "UIViewController+WJDLoaddingView.h"
@@ -23,6 +24,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0];
     [self setupViews];
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
@@ -38,29 +40,28 @@
 //        [self removeLoaddingView];
     }
 }
+
 - (void)__updateNavigationTabbarStatus {
     
     if (self.navigationStatus == NavigationStatus_hidden) {
         self.navigationController.navigationBarHidden = YES;
     }
     switch (self.tabbarStatus) {
-        case TabbarStatus_show:
-        {
+        case TabbarStatus_show: {
             self.tabBarController.tabBar.hidden = NO;
         }
             break;
-        case TabbarStatus_hidden:
-        {
+        case TabbarStatus_hidden: {
             self.tabBarController.tabBar.hidden = YES;
         }
             break;
-        default:
-        {
+        default: {
             self.tabBarController.tabBar.hidden = self.navigationController.viewControllers.count > 1;
         }
             break;
     }
 }
+
 - (void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
@@ -68,20 +69,27 @@
         self.navigationController.navigationBarHidden = NO;
     }
 }
-#pragma mark - loadData
+
+#pragma mark - LoadData
+
 - (void)loadData {
     
 }
+
 - (void)loadMoreData {
     
 }
-#pragma mark - setter
+
+#pragma mark - Setter
+
 //- (void)setBlankType:(WJDBlankType)blankType {
 //    
 //    _blankType = blankType;
 //    [self showBlankWithFrame:CGRectZero Type:_blankType view:self.view];
 //}
+
 #pragma mark - Action
+
 - (void)back {
     
     if (self.backVCName) {
@@ -110,29 +118,35 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
+
 #pragma mark - PublicMethod
+
 - (void)setupNavigation {
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButton.frame     = CGRectMake(0, 0, 44.0f, 44.0f);
+    backButton.frame = CGRectMake(0, 0, 44.0f, 44.0f);
     backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    UIImage *backImage   = [WJDImageProducer arrowImageWithDirection:ArrowDirection_left RenderType:RenderType_stroke Size:CGSizeMake(9.0f, 16.0f) Width:1.0f Color:[UIColor whiteColor] NickName:@"whiteColor"];
+    UIImage *backImage = [WJDImageProducer arrowImageWithDirection:ArrowDirection_left RenderType:RenderType_stroke Size:CGSizeMake(9.0f, 16.0f) Width:1.0f Color:[UIColor blackColor] NickName:@"blackColor"];
     [backButton setImage:backImage forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
 }
+
 - (void)setupViews {
     
 }
+
 - (UIStatusBarStyle)preferredStatusBarStyle {
     
     return UIStatusBarStyleLightContent;
 }
+
 - (void)didReceiveMemoryWarning {
     
     [super didReceiveMemoryWarning];
     
 }
+
 - (void)dealloc {
     
     NSLog(@"\n***%@ dealloc***\n", NSStringFromClass([self class]));

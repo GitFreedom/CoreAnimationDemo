@@ -14,15 +14,15 @@
 
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;//预览图层，来显示照相机拍摄到的画面
 //视频流相关
-@property (nonatomic, strong) AVCaptureSession           *session;//AVCaptureSession对象来执行输入设备和输出设备之间的数据传递
-@property (nonatomic, strong) AVCaptureDeviceInput       *videoInput;//AVCaptureDeviceInput对象是输入流
+@property (nonatomic, strong) AVCaptureSession *session;//AVCaptureSession对象来执行输入设备和输出设备之间的数据传递
+@property (nonatomic, strong) AVCaptureDeviceInput *videoInput;//AVCaptureDeviceInput对象是输入流
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-@property (nonatomic, strong) AVCaptureStillImageOutput  *stillImageOutput;// 照片输出流对象
+@property (nonatomic, strong) AVCaptureStillImageOutput *stillImageOutput;// 照片输出流对象
 #pragma clang diagnostic pop
 //授权状态
-@property (nonatomic, assign) AVAuthorizationStatus      authorizationStatus;
+@property (nonatomic, assign) AVAuthorizationStatus authorizationStatus;
 //队列
 @property (nonatomic) dispatch_queue_t sessionQueue;
 //是否已添加预览图层
@@ -37,13 +37,14 @@
     if (self) {
         //初始化
         self.sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL);
-        self.session      = [[AVCaptureSession alloc] init];
+        self.session = [[AVCaptureSession alloc] init];
         self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
         self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
         self.layer.masksToBounds = YES;
     }
     return self;
 }
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     if (!CGSizeEqualToSize(self.frame.size, self.previewLayer.frame.size)) {
@@ -52,7 +53,9 @@
         [self.layer addSublayer:self.previewLayer];
     }
 }
+
 #pragma mark - PrivateMethod
+
 // 获取前后摄像头对象的方法
 - (AVCaptureDevice *)__cameraWithPosition:(AVCaptureDevicePosition)position {
 #pragma clang diagnostic push
@@ -68,6 +71,7 @@
     }
     return nil;
 }
+
 - (void)__configureSession {
     
     if (self.authorizationStatus != AVAuthorizationStatusAuthorized) {
@@ -93,21 +97,19 @@
     }
     [self.session commitConfiguration];
 }
+
 - (void)__requestAuthorization {
     
     self.authorizationStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    switch (self.authorizationStatus)
-    {
-        case AVAuthorizationStatusAuthorized:
-        {
+    switch (self.authorizationStatus) {
+        case AVAuthorizationStatusAuthorized: {
             dispatch_async(self.sessionQueue, ^{
                 [self __configureSession];
                 [self.session startRunning];
             });
             break;
         }
-        case AVAuthorizationStatusNotDetermined:
-        {
+        case AVAuthorizationStatusNotDetermined: {
             [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^( BOOL granted ) {
                 if ( granted ) {
                     self.authorizationStatus = AVAuthorizationStatusAuthorized;
@@ -118,8 +120,7 @@
             break;
         }
         case AVAuthorizationStatusDenied:
-        case AVAuthorizationStatusRestricted:
-        {
+        case AVAuthorizationStatusRestricted: {
             NSString *message = @"没有拍照权限，所以不能拍摄头像";
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
@@ -132,22 +133,25 @@
             break;
     }
 }
+
 #pragma mark - PublicMethod
+
 - (void)startCamera {
     
     if (self.authorizationStatus != AVAuthorizationStatusAuthorized) {
         [self __requestAuthorization];
-    }
-    else {
+    } else {
         dispatch_async(self.sessionQueue, ^{
             [self.session startRunning];
         });
     }
 }
+
 - (void)pauseCamera {
     
     [self.session stopRunning];
 }
+
 - (void)takePhotoWithComplete:(TakePhotoComplete)complete {
     
     __weak typeof(self) weakSelf = self;
@@ -174,6 +178,7 @@
         }];
     });
 }
+
 - (void)releaseResource {
     
     dispatch_async(self.sessionQueue, ^{
@@ -185,13 +190,17 @@
         self.stillImageOutput = nil;
     });
 }
+
 - (BOOL)haveTakePhotoAuthorization {
     
     return self.authorizationStatus == AVAuthorizationStatusAuthorized;
 }
-#pragma mark - system
+
+#pragma mark - System
+
 - (void)dealloc {
     
     NSLog(@"WJDCameraView delloc");
 }
+
 @end

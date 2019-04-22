@@ -16,9 +16,9 @@
     if (self) {
         _headerHeight = CGFLOAT_MIN;
         _footerHeight = CGFLOAT_MIN;
-        _headerSize   = CGSizeZero;
-        _footerSize   = CGSizeZero;
-        _cellDatas    = [[NSMutableArray alloc]init];
+        _headerSize = CGSizeZero;
+        _footerSize = CGSizeZero;
+        _cellDatas = [[NSMutableArray alloc]init];
     }
     return self;
 }

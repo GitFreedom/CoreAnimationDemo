@@ -7,6 +7,7 @@
 //
 
 #import "WJDBaseCellModel.h"
+#import "WJDJumpManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  标题
  */
 @property (nonatomic, copy  ) NSString *title;
+/**
+ *  跳转类型
+ */
+@property (nonatomic, assign) WJDJumpType jumpType;
 
 @end
 
